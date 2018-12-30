@@ -33,6 +33,19 @@ class ViewController: UIViewController {
     @IBOutlet weak var topButton: UIButton!         // Has TAG = 1
     @IBOutlet weak var bottomButton: UIButton!      // Has TAG = 2
     @IBOutlet weak var storyTextView: UILabel!
+    @IBOutlet weak var restartButton: UIButton!
+    
+    func RestartButton(){
+        viewDidLoad()
+        topButton.isHidden = false
+        bottomButton.isHidden = false
+        storyIndex = 1
+        
+    }
+    
+    @IBAction func restartPressed(_ sender: UIButton) {
+        RestartButton()
+    }
     
     // TODO Step 5: Initialise instance variables here
     
@@ -48,6 +61,7 @@ class ViewController: UIViewController {
         storyTextView.text = story1
         topButton.setTitle(answer1a, for: UIControl.State.normal)
         bottomButton.setTitle(answer1b, for: UIControl.State.normal)
+        restartButton.isHidden = true
         
         
     }
@@ -69,6 +83,8 @@ class ViewController: UIViewController {
             storyTextView.text = story6
             topButton.isHidden = true
             bottomButton.isHidden = true
+            // bottomButton.setTitle("Restart", for: .normal)
+            restartButton.isHidden = false
             storyIndex = 6
             }
         
@@ -76,7 +92,9 @@ class ViewController: UIViewController {
             storyTextView.text = story5
             topButton.isHidden = true
             bottomButton.isHidden = true
+            // bottomButton.setTitle("Restart", for: .normal)
             storyIndex = 5
+            restartButton.isHidden = false
         }
         
 //   else     if sender.tag == 1 && storyIndex == 2{
@@ -98,8 +116,10 @@ class ViewController: UIViewController {
    else   if (sender.tag == 2) && (storyIndex == 2) {
             storyTextView.text = story4
             topButton.isHidden = true
+         //   bottomButton.setTitle("Restart", for: .normal)
             bottomButton.isHidden = true
             storyIndex = 4
+            restartButton.isHidden = false
         }
         
 //           if sender.tag == 1 && storyIndex == 3 {
@@ -108,7 +128,11 @@ class ViewController: UIViewController {
 //                bottomButton.isHidden = true
 //            }
         
-        
+        else if sender.tag == 2 && (storyIndex == 4 || storyIndex == 5 || storyIndex == 6 ){
+            
+            RestartButton()
+            
+        }
     
      
     
